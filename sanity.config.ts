@@ -3,6 +3,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
+import { pageStructure, singletonPlugin } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import {
@@ -20,8 +21,10 @@ import {
   projectId,
 } from '~/lib/sanity.api'
 import { schema } from '~/schemas'
+import home from '~/schemas/singletons/home'
+import settings from '~/schemas/singletons/settings'
 
-const iframeOptions = {
+export const iframeOptions = {
   url: defineUrlResolver({
     base: '/api/draft',
     requiresSlug: ['post'],
@@ -29,6 +32,10 @@ const iframeOptions = {
   urlSecretId: previewSecretId,
   reload: { button: true },
 } satisfies IframeOptions
+
+export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [home.name]
+const PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS =
+  [] satisfies typeof PREVIEWABLE_DOCUMENT_TYPES
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -45,39 +52,24 @@ export default defineConfig({
   //edit schemas in './src/schemas'
   schema,
   plugins: [
-    // deskTool({
-    //   // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
-    //   // You can add any React component to `S.view.component` and it will be rendered in the pane
-    //   // and have access to content in the form in real-time.
-    //   // It's part of the Studio's “Structure Builder API” and is documented here:
-    //   // https://www.sanity.io/docs/structure-builder-reference
-    //   defaultDocumentNode: (S, { schemaType }) => {
-    //     return S.document().views([
-    //       // Default form view
-    //       S.view.form(),
-    //       // Preview
-    //       S.view.component(Iframe).options(iframeOptions).title('Preview'),
-    //     ])
-    //   },
-    // }),
     deskTool({
-      structure: (S) =>
-        S.list()
-          .title('Content')
-          .items([
-            // Our singleton type has a list item with a custom child
-            S.listItem().title('Settings').id('settings').child(
-              // Instead of rendering a list of documents, we render a single
-              // document, specifying the `documentId` manually to ensure
-              // that we're editing the single instance of the document
-              S.document().schemaType('settings').documentId('settings'),
-            ),
-
-            // Regular document types
-            S.documentTypeListItem('post').title('Blog Posts'),
-          ]),
+      structure: pageStructure([home, settings]),
+      // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
+      // You can add any React component to `S.view.component` and it will be rendered in the pane
+      // and have access to content in the form in real-time.
+      // It's part of the Studio's “Structure Builder API” and is documented here:
+      // https://www.sanity.io/docs/structure-builder-reference
+      defaultDocumentNode: (S, { schemaType }) => {
+        return S.document().views([
+          // Default form view
+          S.view.form(),
+          // Preview
+          S.view.component(Iframe).options(iframeOptions).title('Preview'),
+        ])
+      },
     }),
-
+    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
+    singletonPlugin([home.name, settings.name]),
     // Add the "Open preview" action
     previewUrl({
       base: '/api/draft',
