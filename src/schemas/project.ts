@@ -22,12 +22,29 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main Image',
+      title: 'Portrait Image',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'featuredImageLarge',
+      title: 'Large Featured Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'featuredImageLandscape',
+      title: 'Landscape Featured Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+
     defineField({
       name: 'projectType',
       title: 'Project Type',
@@ -37,6 +54,15 @@ export default defineType({
       name: 'designCredit',
       title: 'Design Credit',
       type: 'string',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
     }),
   ],
 })

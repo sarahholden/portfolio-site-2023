@@ -1,26 +1,32 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-import { type Post, type Project } from 'types'
+import { type Project, SettingsPayload } from 'types'
 
 import Card from '~/components/Card'
-import Container from '~/components/Container'
 import Welcome from '~/components/Welcome'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { getPosts, postsQuery } from '~/lib/sanity.queries'
-import { getProjects, projectsQuery } from '~/lib/sanity.queries'
+import { getProjects, getSettings, projectsQuery } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
+
+import Layout from '../components/shared/Layout'
+
+const fallbackSettings: SettingsPayload = {
+  tagline: 'default',
+  menuItems: [],
+  footer: [],
+}
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    posts: Post[]
+    settings: SettingsPayload
     projects: Project[]
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
   // Get external data from sanity using
-  const posts = await getPosts(client)
   const projects = await getProjects(client)
+  const settings = await getSettings(client)
 
   // The value of the `props` key will be
   //  passed to the `IndexPage` component
@@ -28,8 +34,8 @@ export const getStaticProps: GetStaticProps<
     props: {
       draftMode,
       token: draftMode ? readToken : '',
-      posts,
       projects,
+      settings: settings ?? fallbackSettings,
     },
   }
 }
@@ -37,18 +43,12 @@ export const getStaticProps: GetStaticProps<
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  const [posts] = useLiveQuery<Post[]>(props.posts, postsQuery)
   const [projects] = useLiveQuery<Project[]>(props.projects, projectsQuery)
+  const { settings } = props
 
   return (
-    <Container>
+    <Layout settings={settings}>
       <section>
-        {posts.length ? (
-          posts.map((post) => <Card key={post._id} post={post} />)
-        ) : (
-          <Welcome />
-        )}
-
         {projects.length ? (
           projects.map((project) => (
             <div key={project._id}>{project.title}</div>
@@ -57,6 +57,6 @@ export default function IndexPage(
           <Welcome />
         )}
       </section>
-    </Container>
+    </Layout>
   )
 }

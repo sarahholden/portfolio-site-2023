@@ -71,6 +71,27 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'recentWorkHeading',
+      title: 'Recent Work',
+      type: 'string',
+    }),
+    defineField({
+      name: 'recentWorkBody',
+      title: 'Recent Work Body',
+      type: 'text',
+    }),
+    defineField({
+      name: 'recentWork',
+      title: 'Recent Work',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'project' }],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

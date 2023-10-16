@@ -66,29 +66,15 @@ export default defineType({
     }),
     defineField({
       name: 'contactText',
-      description:
-        'This is a block of text that will be displayed in the contact section.',
       title: 'Contact Text',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-        }),
-      ],
+      type: 'blockContent',
     }),
-
     defineField({
       name: 'footer',
-      description:
-        'This is a block of text that will be displayed at the bottom of the page.',
-      title: 'Footer Info',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-        }),
-      ],
+      title: 'Footer',
+      type: 'blockContent',
     }),
+
     defineField({
       name: 'ogImage',
       title: 'Open Graph Image',

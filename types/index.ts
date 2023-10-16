@@ -28,9 +28,7 @@ export interface Project {
   designCredit?: string
 }
 
-export interface Settings {
-  _type: 'settings'
-  _id: string
+export interface SettingsPayload {
   tagline: string
   menuItems?: MenuItem[]
   emailAddress?: string
