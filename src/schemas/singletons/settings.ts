@@ -10,6 +10,15 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      name: 'tagline',
+      title: 'Tagline',
+      description: 'Site Tagline',
+      type: 'text',
+      initialValue: 'Creative E-Commerce',
+      rows: 1,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
@@ -17,6 +26,7 @@ export default defineType({
       of: [
         {
           title: 'Reference',
+          name: 'reference',
           type: 'reference',
           to: [
             {
@@ -30,6 +40,44 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'emailAddress',
+      title: 'Email Address',
+      description: 'Email address for button',
+      type: 'text',
+      initialValue: 'hello@sarahholden.studio',
+      rows: 1,
+      validation: (rule) => rule.email(),
+    }),
+    defineField({
+      name: 'ctaButtonText',
+      title: 'Get In Touch',
+      description: 'Nav Button Text',
+      type: 'text',
+      initialValue: 'Get In Touch',
+      rows: 1,
+    }),
+    defineField({
+      name: 'wavyBannerText',
+      title: 'Banner Text',
+      description: 'For wavy banner CTA',
+      type: 'text',
+      initialValue: 'Book now for your next project',
+      rows: 1,
+    }),
+    defineField({
+      name: 'contactText',
+      description:
+        'This is a block of text that will be displayed in the contact section.',
+      title: 'Contact Text',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'block',
+        }),
+      ],
+    }),
+
+    defineField({
       name: 'footer',
       description:
         'This is a block of text that will be displayed at the bottom of the page.',
@@ -38,22 +86,6 @@ export default defineType({
       of: [
         defineArrayMember({
           type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
         }),
       ],
     }),
