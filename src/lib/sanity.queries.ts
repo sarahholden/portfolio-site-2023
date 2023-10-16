@@ -3,6 +3,8 @@ import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
+import { type Post, type Project } from '../../types'
+
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
 export async function getPosts(client: SanityClient): Promise<Post[]> {
@@ -24,30 +26,19 @@ export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `
 
-export interface Post {
-  _type: 'post'
-  _id: string
-  _createdAt: string
-  title?: string
-  slug: Slug
-  excerpt?: string
-  mainImage?: ImageAsset
-  body: PortableTextBlock[]
-}
-
 export const projectsQuery = groq`*[_type == "project" && defined(slug.current)] | order(_createdAt desc)`
 
 export async function getProjects(client: SanityClient): Promise<Project[]> {
   return await client.fetch(projectsQuery)
 }
 
-export interface Project {
-  _type: 'project'
-  _id: string
-  _createdAt: string
-  title?: string
-  slug: Slug
-  mainImage?: ImageAsset
-  projectType?: string
-  designCredit?: string
-}
+export const settingsQuery = groq`
+  *[_type== "settings"][0]{
+    footer,
+    menuItems[]->{
+      _type,
+      "slug": slug.current,
+      title
+    },
+    
+  }`
