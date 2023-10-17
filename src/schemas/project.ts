@@ -37,7 +37,7 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'featuredImageLandscape',
+      name: 'featuredImageSmall',
       title: 'Landscape Featured Image',
       type: 'image',
       options: {

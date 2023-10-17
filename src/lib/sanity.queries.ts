@@ -38,7 +38,7 @@ export async function getProjects(client: SanityClient): Promise<Project[]> {
 }
 
 export const homePageQuery = groq`
-  *[_type == "home"][0]{
+  *[_type == "home"][1]{
     _id,
     title,
     overview,
@@ -46,7 +46,7 @@ export const homePageQuery = groq`
       _type,
       title,
       featuredImageLarge,
-      featuredImageLandscape,
+      featuredImageSmall,
       projectType,
       designCredit,
       "slug": slug.current,
@@ -66,6 +66,12 @@ export const homePageQuery = groq`
 
   }
 `
+
+export async function getHomePage(
+  client: SanityClient,
+): Promise<HomePagePayload> {
+  return await client.fetch(homePageQuery)
+}
 
 export const settingsQuery = groq`
   *[_type== "settings"][1]{
