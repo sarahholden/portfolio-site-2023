@@ -8,9 +8,9 @@ export default defineType({
   icon: OlistIcon,
   fields: [
     defineField({
-      name: 'title',
-      type: 'text',
-      title: 'Title',
+      name: 'heading',
+      type: 'string',
+      title: 'Heading',
     }),
     defineField({
       name: 'body',
@@ -21,16 +21,14 @@ export default defineType({
       name: 'listItem',
       type: 'array',
       of: [
-        defineField({
-          name: 'title',
-          type: 'text',
-          title: 'Title',
-        }),
-        defineField({
-          name: 'body',
-          type: 'text',
-          title: 'Body',
-        }),
+        {
+          type: 'object',
+          name: 'inline',
+          fields: [
+            { type: 'string', name: 'title' },
+            { type: 'text', name: 'body' },
+          ],
+        },
       ],
     },
   ],

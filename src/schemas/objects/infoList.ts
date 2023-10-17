@@ -23,7 +23,7 @@ export default defineType({
       of: [
         defineField({
           name: 'heading',
-          type: 'text',
+          type: 'string',
           title: 'Heading',
         }),
       ],
