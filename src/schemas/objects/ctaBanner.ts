@@ -1,11 +1,9 @@
-import { ThListIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'infoList',
+  name: 'ctaBanner',
   type: 'object',
-  title: 'Info List',
-  icon: ThListIcon,
+  title: 'CTA Banner',
   fields: [
     defineField({
       name: 'headline1',
@@ -30,16 +28,4 @@ export default defineType({
       ],
     }),
   ],
-  preview: {
-    select: {
-      title: 'headline1',
-    },
-    prepare({ title }) {
-      return {
-        title: title || 'Untitled',
-        subtitle: 'Info List',
-        media: ThListIcon,
-      }
-    },
-  },
 })

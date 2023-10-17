@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export const pageType = defineType({
+export default defineType({
   name: 'page',
   type: 'document',
   title: 'Page',
@@ -16,8 +16,8 @@ export const pageType = defineType({
           type: 'hero',
         }),
         defineArrayMember({
-          name: 'wigglyBanner',
-          type: 'wigglyBanner',
+          name: 'ctaBanner',
+          type: 'ctaBanner',
         }),
         defineArrayMember({
           name: 'infoList',
