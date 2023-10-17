@@ -5,6 +5,7 @@ import { type SanityClient } from 'next-sanity'
 
 import {
   type HomePagePayload,
+  type PagePayload,
   type Post,
   type Project,
   type SettingsPayload,
@@ -37,35 +38,7 @@ export async function getProjects(client: SanityClient): Promise<Project[]> {
   return await client.fetch(projectsQuery)
 }
 
-export const homePageQuery = groq`
-  *[_type == "home"][1]{
-    _id,
-    title,
-    overview,
-    showcaseProjects[]->{
-      _type,
-      title,
-      featuredImageLarge,
-      featuredImageSmall,
-      projectType,
-      designCredit,
-      "slug": slug.current,
-      tags,
-    },
-    recentWorkHeading,
-    recentWorkBody,
-    recentWork[]->{
-      _type,
-      title,
-      mainImage,
-      projectType,
-      designCredit,
-      "slug": slug.current,
-      tags,
-    },
-
-  }
-`
+export const homePageQuery = groq`*[_type == "home"][1]`
 
 export async function getHomePage(
   client: SanityClient,
@@ -95,4 +68,10 @@ export async function getSettings(
   client: SanityClient,
 ): Promise<SettingsPayload> {
   return await client.fetch(settingsQuery)
+}
+
+export const pageQuery = groq`*[_type=="page"]`
+
+export async function getPage(client: SanityClient): Promise<PagePayload> {
+  return await client.fetch(pageQuery)
 }

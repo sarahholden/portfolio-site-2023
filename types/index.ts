@@ -30,6 +30,37 @@ export interface Project {
   tags: string[]
 }
 
+export interface CTABannerType {
+  bannerText?: string
+  colorScheme?: string
+}
+export interface HeroType {
+  headline1?: string
+  headline2?: string
+  image?: ImageAsset
+}
+export interface InfoListType {
+  heading?: string
+  body?: string
+  listItem?: string[]
+}
+
+export interface NumberedListType {
+  heading?: string
+  body?: string
+  listItem?: {
+    title?: string
+    body?: string
+  }[]
+}
+
+export interface PagePayload {
+  title?: string
+  slug: Slug
+  overview?: PortableTextBlock[]
+  pageBuilder: PortableTextBlock[]
+}
+
 export interface SettingsPayload {
   tagline: string
   menuItems?: MenuItem[]
