@@ -5,7 +5,6 @@ export interface MenuItem {
   slug?: string
   title?: string
 }
-
 export interface Post {
   _type: 'post'
   _id: string
@@ -24,8 +23,11 @@ export interface Project {
   title?: string
   slug: Slug
   mainImage?: ImageAsset
+  featuredImageLarge?: ImageAsset
+  featuredImageSmall?: ImageAsset
   projectType?: string
   designCredit?: string
+  tags: string[]
 }
 
 export interface SettingsPayload {
@@ -37,4 +39,13 @@ export interface SettingsPayload {
   contactText?: PortableTextBlock[]
   footer?: PortableTextBlock[]
   ogImage?: Image
+}
+
+export interface HomePagePayload {
+  title: string
+  overview?: PortableTextBlock[]
+  showcaseProjects?: Omit<Project, 'mainImage'>
+  recentWorkHeading?: string
+  recentWorkBody?: string
+  recentWork?: Omit<Project, 'featuredImageLarge' | 'featuredImageSmall'>
 }

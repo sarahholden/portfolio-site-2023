@@ -3,7 +3,12 @@ import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
-import { type Post, type Project, type SettingsPayload } from '../../types'
+import {
+  type HomePagePayload,
+  type Post,
+  type Project,
+  type SettingsPayload,
+} from '../../types'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 

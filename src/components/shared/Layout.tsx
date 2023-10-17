@@ -16,15 +16,24 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <div>
-      {children}
-      <div className="post__content">
-        <PortableText value={settings?.footer} />
-      </div>
-      {settings.emailAddress ? (
-        <h1>{settings.emailAddress}</h1>
-      ) : (
-        <p>No email provided</p>
-      )}
+      <header>Header Here!</header>
+      <br />
+      <br />
+      <br />
+      <main>{children}</main>
+      <br />
+      <br />
+      <br />
+      <footer>
+        <div className="post__content">
+          <PortableText value={settings?.footer} />
+        </div>
+        {settings.emailAddress ? (
+          <h1>{settings.emailAddress}</h1>
+        ) : (
+          <p>No email provided</p>
+        )}
+      </footer>
     </div>
   )
 }
