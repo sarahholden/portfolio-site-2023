@@ -18,13 +18,6 @@ const fallbackPage: HomePagePayload = {
   title: '',
 }
 
-// type PageProps = GetStaticProps<
-//   SharedPageProps & {
-//     settings: SettingsPayload
-//     page: HomePagePayload
-//   }
-// >
-
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
     settings: SettingsPayload

@@ -17,6 +17,9 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
 
+export const postSlugsQuery = groq`
+*[_type == "post" && defined(slug.current)][].slug.current
+`
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
 
 export async function getPost(
@@ -27,10 +30,6 @@ export async function getPost(
     slug,
   })
 }
-
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
 
 export const projectsQuery = groq`*[_type == "project" && defined(slug.current)] | order(_createdAt desc)`
 
@@ -70,8 +69,19 @@ export async function getSettings(
   return await client.fetch(settingsQuery)
 }
 
-export const pageQuery = groq`*[_type=="page"]`
+export const pageSlugsQuery = groq`
+*[_type == "page" && defined(slug.current)][].slug.current
+`
 
-export async function getPage(client: SanityClient): Promise<PagePayload> {
-  return await client.fetch(pageQuery)
+export const pageBySlugQuery = groq`
+*[_type=="page" && slug.current == $slug][0]
+`
+
+export async function getPage(
+  client: SanityClient,
+  slug: string,
+): Promise<PagePayload> {
+  return await client.fetch(pageBySlugQuery, {
+    slug,
+  })
 }
