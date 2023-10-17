@@ -33,12 +33,13 @@ export default defineType({
   preview: {
     select: {
       title: 'headline1',
+      image: 'image',
     },
-    prepare({ title }) {
+    prepare({ title, image }) {
       return {
         title: title || 'Untitled',
         subtitle: 'Hero',
-        media: ImageIcon,
+        media: image || ImageIcon,
       }
     },
   },

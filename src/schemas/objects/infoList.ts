@@ -8,31 +8,30 @@ export default defineType({
   icon: ThListIcon,
   fields: [
     defineField({
-      name: 'headline1',
-      type: 'text',
-      title: 'Headline 1',
+      name: 'heading',
+      type: 'string',
+      title: 'Heading',
     }),
     defineField({
-      name: 'headline2',
+      name: 'body',
       type: 'text',
-      title: 'Headline 2',
+      title: 'Body',
     }),
-    defineField({
-      name: 'image',
-      type: 'image',
-      options: { hotspot: true },
-      fields: [
+    {
+      name: 'listItem',
+      type: 'array',
+      of: [
         defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
+          name: 'heading',
+          type: 'text',
+          title: 'Heading',
         }),
       ],
-    }),
+    },
   ],
   preview: {
     select: {
-      title: 'headline1',
+      title: 'heading',
     },
     prepare({ title }) {
       return {

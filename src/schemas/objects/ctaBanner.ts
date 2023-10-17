@@ -1,31 +1,37 @@
+import { SparklesIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'ctaBanner',
   type: 'object',
   title: 'CTA Banner',
+  icon: SparklesIcon,
   fields: [
     defineField({
-      name: 'headline1',
+      name: 'bannerText',
       type: 'text',
-      title: 'Headline 1',
+      title: 'Banner Text',
     }),
     defineField({
-      name: 'headline2',
-      type: 'text',
-      title: 'Headline 2',
-    }),
-    defineField({
-      name: 'image',
-      type: 'image',
-      options: { hotspot: true },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }),
-      ],
+      name: 'colorScheme',
+      type: 'string',
+      title: 'Color Scheme',
+      description: 'Select color Scheme',
+      options: {
+        list: ['green', 'purple'],
+      },
     }),
   ],
+  preview: {
+    select: {
+      title: 'bannerText',
+    },
+    prepare({ title }) {
+      return {
+        title: title || 'Untitled',
+        subtitle: 'Numbered List',
+        media: SparklesIcon,
+      }
+    },
+  },
 })
