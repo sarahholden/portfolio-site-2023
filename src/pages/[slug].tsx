@@ -75,7 +75,6 @@ export default function PageSlugRoute(
 export const getStaticPaths = async () => {
   const client = getClient()
   const slugs = await client.fetch(pageSlugsQuery)
-  slugs
 
   return {
     paths: slugs?.map(({ slug }) => `/${slug}`) || [],
