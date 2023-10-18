@@ -64,8 +64,9 @@ export interface PagePayload {
 export interface SettingsPayload {
   tagline: string
   menuItems?: MenuItem[]
-  emailAddress?: string
+  emailAddress: string
   ctaButtonText?: string
+  ctaButtonTextMobile?: string
   wavyBannerText?: string
   contactText?: PortableTextBlock[]
   footer?: PortableTextBlock[]

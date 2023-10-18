@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { SettingsPayload } from '~/types'
 
+import Navbar from '../global/Navbar'
 import CTABanner from './CTABanner'
 
 export interface LayoutProps {
@@ -34,29 +35,14 @@ export default function Layout({
               />
             </svg>
           </Link>
-          <p className="hide-mobile">Creative E-Commerce</p>
+          <p className="hide-mobile">{settings.tagline}</p>
         </div>
-        <nav className="header__nav">
-          <Link href="/#work" className="header__link">
-            Work
-          </Link>
-          <Link href="about" className="header__link">
-            About
-          </Link>
-          <a
-            href={`mailto:${settings.emailAddress}`}
-            target="_blank"
-            className="btn btn--small blob-btn"
-          >
-            <span className="text show-mobile">Contact</span>
-            <span className="text hide-mobile">Get in Touch</span>
-            <div className="blob-btn__blobs">
-              <div className="blob-btn__blob"></div>
-              <div className="blob-btn__blob"></div>
-              <div className="blob-btn__blob"></div>
-            </div>
-          </a>
-        </nav>
+        <Navbar
+          emailAddress={settings.emailAddress}
+          menuItems={settings.menuItems}
+          ctaButtonTextMobile={settings.ctaButtonTextMobile}
+          ctaButtonText={settings.ctaButtonText}
+        />
       </header>
       <main>{children}</main>
       <footer>

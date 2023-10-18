@@ -49,7 +49,7 @@ export default defineType({
       type: 'text',
       initialValue: 'hello@sarahholden.studio',
       rows: 1,
-      validation: (rule) => rule.email(),
+      validation: (rule) => rule.email().required(),
     }),
     defineField({
       name: 'ctaButtonText',
@@ -57,6 +57,14 @@ export default defineType({
       description: 'Nav Button Text',
       type: 'text',
       initialValue: 'Get In Touch',
+      rows: 1,
+    }),
+    defineField({
+      name: 'ctaButtonTextMobile',
+      title: 'Get In Touch Mobile',
+      description: 'Nav Button Text for small screens',
+      type: 'text',
+      initialValue: 'Contact',
       rows: 1,
     }),
     defineField({

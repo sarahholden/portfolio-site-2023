@@ -18,6 +18,7 @@ import { PagePayload, SettingsPayload } from '~/types'
 
 const fallbackSettings: SettingsPayload = {
   tagline: 'default',
+  emailAddress: 'hello@sarahholden.studio',
   menuItems: [],
   footer: [],
 }
