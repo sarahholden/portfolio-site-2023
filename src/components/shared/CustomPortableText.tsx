@@ -21,12 +21,10 @@ export function CustomPortableText({
   value: any
   settings: SettingsPayload
 }) {
-  console.log(value)
   const components: PortableTextComponents = {
     types: {
       hero: ({ value }) => {
-        const { items } = value || {}
-        return <Hero timelines={items} />
+        return <Hero value={value} />
       },
       ctaBanner: ({ value }) => {
         const { items } = value || {}
