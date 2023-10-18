@@ -63,10 +63,12 @@ export default function PageSlugRoute(
     slug: props.page.slug.current,
   })
 
+  const { settings } = props
+
   return (
-    <div>
+    <Layout settings={settings}>
       <h2>{page.title}</h2>
-    </div>
+    </Layout>
   )
 }
 

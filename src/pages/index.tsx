@@ -44,35 +44,7 @@ export const getStaticProps: GetStaticProps<
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  // const [projects] = useLiveQuery<Project[]>(props.projects, projectsQuery)
   const { settings, page } = props
-
-  // console.log('Console log from home page:')
-  // console.log(page)
-  // console.log('--------')
-
-  // if (!page) {
-  //   return (
-  //     <Layout settings={settings} preview={draftMode} loading={loading}>
-  //       {draftMode ? (
-  //         <div className="text-center">
-  //           Please start editing your Home document to see the preview!
-  //         </div>
-  //       ) : (
-  //         <div className="text-center">
-  //           You don&rsquo;t have a homepage document yet,{' '}
-  //           <Link
-  //             href="/studio/desk/home%7C%2Cview%3Dpreview"
-  //             className="underline"
-  //           >
-  //             create one now
-  //           </Link>
-  //           !
-  //         </div>
-  //       )}
-  //     </Layout>
-  //   )
-  // }
 
   if (!page) {
     return <h1>No Page yet!</h1>
