@@ -34,8 +34,7 @@ export const getStaticProps: GetStaticProps<
   Query
 > = async ({ draftMode = false, params = {} }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
-  // const page = await getPage(client, params.slug)
-  // const settings = await getSettings(client)
+
   const [settings, page] = await Promise.all([
     getSettings(client),
     getPage(client, params.slug),
@@ -60,16 +59,13 @@ export const getStaticProps: GetStaticProps<
 export default function PageSlugRoute(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  console.log(props.page)
   const [page] = useLiveQuery(props.page, pageBySlugQuery, {
     slug: props.page.slug.current,
   })
-  console.log('slug.tsx')
-  console.log(page)
-  console.log('--------')
+
   return (
     <div>
-      <h2>Hello from the page slug route</h2>
+      <h2>{page.title}</h2>
     </div>
   )
 }
