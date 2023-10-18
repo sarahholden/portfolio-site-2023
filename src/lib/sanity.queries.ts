@@ -9,7 +9,7 @@ import {
   type Post,
   type Project,
   type SettingsPayload,
-} from '../../types'
+} from '../types'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 

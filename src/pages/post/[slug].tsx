@@ -2,7 +2,7 @@ import { PortableText } from '@portabletext/react'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
-import { Post } from 'types'
+import { Post } from '~/types'
 
 import Container from '~/components/Container'
 import { readToken } from '~/lib/sanity.api'

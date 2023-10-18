@@ -2,7 +2,6 @@ import { PortableText } from '@portabletext/react'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
-import { PagePayload, SettingsPayload } from 'types'
 
 import Layout from '~/components/shared/Layout'
 import { readToken } from '~/lib/sanity.api'
@@ -15,6 +14,7 @@ import {
   pageSlugsQuery,
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
+import { PagePayload, SettingsPayload } from '~/types'
 
 const fallbackSettings: SettingsPayload = {
   tagline: 'default',

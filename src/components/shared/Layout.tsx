@@ -1,5 +1,6 @@
 import { PortableText } from '@portabletext/react'
-import { SettingsPayload } from 'types'
+
+import { SettingsPayload } from '~/types'
 
 export interface LayoutProps {
   children: React.ReactNode
