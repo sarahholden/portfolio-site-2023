@@ -3,6 +3,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
+import { CustomPortableText } from '~/components/shared/CustomPortableText'
 import Layout from '~/components/shared/Layout'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
@@ -68,7 +69,8 @@ export default function PageSlugRoute(
 
   return (
     <Layout settings={settings}>
-      <h2>{page.title}</h2>
+      {/* Body */}
+      {page && <CustomPortableText value={page.pageBuilder} />}
     </Layout>
   )
 }
