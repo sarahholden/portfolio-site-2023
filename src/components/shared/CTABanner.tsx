@@ -1,7 +1,7 @@
-export default function CTABanner({ bannerText }) {
+export default function CTABanner({ bannerText, emailAddress }) {
   return (
     <section className="wavy-divider">
-      <a href="about.html">
+      <a href={`mailto:${emailAddress}`} target="_blank" title={bannerText}>
         <svg
           className="svgtext svgtext--wavy"
           width="120%"
