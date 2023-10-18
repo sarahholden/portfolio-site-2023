@@ -1,18 +1,28 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
 
+import {
+  CTABannerType,
+  HeroType,
+  InfoListType,
+  NumberedListType,
+  SettingsPayload,
+} from '~/types'
+
 import CTABanner from './CTABanner'
 import Hero from './Hero'
 import InfoList from './InfoList'
 import NumberedList from './NumberedList'
 
-export function CustomPortableText({ value }: { value: PortableTextBlock[] }) {
+export function CustomPortableText({
+  value,
+  settings,
+}: {
+  value: any
+  settings: SettingsPayload
+}) {
+  console.log(value)
   const components: PortableTextComponents = {
-    block: {
-      normal: ({ children }) => {
-        return <p>{children}</p>
-      },
-    },
     types: {
       hero: ({ value }) => {
         const { items } = value || {}
@@ -20,7 +30,7 @@ export function CustomPortableText({ value }: { value: PortableTextBlock[] }) {
       },
       ctaBanner: ({ value }) => {
         const { items } = value || {}
-        return <CTABanner />
+        return <CTABanner settings={settings} value={value} />
       },
       infoList: ({ value }) => {
         const { items } = value || {}

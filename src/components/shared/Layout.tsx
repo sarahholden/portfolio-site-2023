@@ -48,11 +48,6 @@ export default function Layout({
       </header>
       <main>{children}</main>
       <footer>
-        <CTABanner
-          bannerText={settings?.wavyBannerText}
-          emailAddress={settings?.emailAddress}
-        ></CTABanner>
-
         <section className="contact">
           <div className="contact__inner">
             <h3 className="section__title--medium" data-reveal="lines-masked">

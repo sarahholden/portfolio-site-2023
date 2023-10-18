@@ -58,7 +58,7 @@ export interface PagePayload {
   title?: string
   slug: Slug
   overview?: PortableTextBlock[]
-  pageBuilder: PortableTextBlock[]
+  pageBuilder?: PortableTextBlock[]
 }
 
 export interface SettingsPayload {

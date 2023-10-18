@@ -65,12 +65,13 @@ export default function PageSlugRoute(
     slug: props.page.slug.current,
   })
 
+  const { pageBuilder } = page
+
   const { settings } = props
 
   return (
     <Layout settings={settings}>
-      {/* Body */}
-      {page && <CustomPortableText value={page.pageBuilder} />}
+      {page && <CustomPortableText settings={settings} value={pageBuilder} />}
     </Layout>
   )
 }
