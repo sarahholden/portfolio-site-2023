@@ -1,11 +1,19 @@
-export default function CTABanner({ settings, value }) {
+import { CTABannerType } from '~/types'
+
+export default function CTABanner({
+  emailAddress,
+  value,
+}: {
+  emailAddress: string
+  value: CTABannerType
+}) {
   const bannerText = 'text'
   return (
     <section className="wavy-divider">
       <a
-        href={`mailto:${settings.emailAddress}`}
+        href={`mailto:${emailAddress}`}
         target="_blank"
-        title={bannerText}
+        title={value.bannerText}
       >
         <svg
           className="svgtext svgtext--wavy"
@@ -20,7 +28,8 @@ export default function CTABanner({ settings, value }) {
           ></path>
           <text>
             <textPath href="#text-curve11">
-              {bannerText} • {bannerText} • {bannerText} • {bannerText}
+              {value.bannerText} • {value.bannerText} • {value.bannerText} •{' '}
+              {value.bannerText}
             </textPath>
           </text>
         </svg>

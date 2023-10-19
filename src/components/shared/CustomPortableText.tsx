@@ -1,5 +1,10 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
-import type { PortableTextBlock } from '@portabletext/types'
+import type {
+  ArbitraryTypedObject,
+  PortableTextBlock,
+  PortableTextMarkDefinition,
+  PortableTextSpan,
+} from '@portabletext/types'
 
 import {
   CTABannerType,
@@ -27,12 +32,10 @@ export function CustomPortableText({
         return <Hero value={value} />
       },
       ctaBanner: ({ value }) => {
-        const { items } = value || {}
-        return <CTABanner settings={settings} value={value} />
+        return <CTABanner emailAddress={settings.emailAddress} value={value} />
       },
       infoList: ({ value }) => {
-        const { items } = value || {}
-        return <InfoList />
+        return <InfoList value={value} />
       },
       numberedList: ({ value }) => {
         const { items } = value || {}

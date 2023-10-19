@@ -71,7 +71,9 @@ export default function PageSlugRoute(
 
   return (
     <Layout settings={settings}>
-      {page && <CustomPortableText settings={settings} value={pageBuilder} />}
+      {pageBuilder && (
+        <CustomPortableText settings={settings} value={pageBuilder} />
+      )}
     </Layout>
   )
 }
