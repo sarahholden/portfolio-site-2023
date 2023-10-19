@@ -43,6 +43,9 @@ export interface InfoListType {
   heading?: string
   body?: string
   listItem?: string[]
+  heading2?: string
+  body2?: string
+  listItem2?: string[]
 }
 
 export interface NumberedListType {

@@ -28,6 +28,28 @@ export default defineType({
         }),
       ],
     },
+    defineField({
+      name: 'heading2',
+      type: 'string',
+      title: 'Heading Right',
+    }),
+    defineField({
+      name: 'body2',
+      type: 'text',
+      title: 'Body Right',
+    }),
+    {
+      name: 'listItem2',
+      title: 'List Right Col',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'heading',
+          type: 'string',
+          title: 'Heading',
+        }),
+      ],
+    },
   ],
   preview: {
     select: {

@@ -7,7 +7,6 @@ import { CustomPortableText } from '~/components/shared/CustomPortableText'
 import Layout from '~/components/shared/Layout'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
 import {
   getPage,
   getSettings,
