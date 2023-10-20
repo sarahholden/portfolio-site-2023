@@ -54,8 +54,8 @@ export const homePageQuery = groq`
     recentWork[]->{
       _type,
       title,
-      featuredImageLarge,
-      featuredImageSmall,
+      mainImage,
+
       projectType,
       designCredit,
       tags,
@@ -63,7 +63,8 @@ export const homePageQuery = groq`
     showcaseProjects[]->{
       _type,
       title,
-      mainImage,
+            featuredImageLarge,
+      featuredImageSmall,
       projectType,
       designCredit,
       tags,
