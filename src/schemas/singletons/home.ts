@@ -79,31 +79,83 @@ export default defineType({
         list: ['green', 'purple'],
       },
     }),
-    defineField({
-      name: 'gallery',
+    {
+      name: 'scrollGallery',
       title: 'Gallery',
-      description:
-        'These images will scroll in the background after the intro section',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          name: 'galleryImage',
-          title: 'Gallery Image',
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
+      type: 'object',
+      fields: [
+        {
+          name: 'column1',
+          title: 'Column 1',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              name: 'galleryImage',
+              title: 'Gallery Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alt text',
+                }),
+              ],
+              validation: (rule) => rule.required(),
             }),
           ],
-          validation: (rule) => rule.required(),
-        }),
+        },
+        {
+          name: 'column2',
+          title: 'Column 2',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              name: 'galleryImage',
+              title: 'Gallery Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alt text',
+                }),
+              ],
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
+        {
+          name: 'column3',
+          title: 'Column 3',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              name: 'galleryImage',
+              title: 'Gallery Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alt text',
+                }),
+              ],
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
       ],
-    }),
+    },
+
     defineField({
       name: 'showcaseProjects',
       title: 'Showcase projects',

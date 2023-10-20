@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
+import GalleryColumn from '~/components/shared/GalleryColumn'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
@@ -57,7 +58,7 @@ export default function IndexPage(
     introImage,
     bannerText,
     colorScheme,
-    gallery,
+    scrollGallery,
     showcaseProjects,
     recentWorkHeading,
     recentWorkBody,
@@ -82,11 +83,43 @@ export default function IndexPage(
                 src={urlForImage(introImage).url()}
                 height={231}
                 width={367}
-                alt={introImage.alt as string}
+                alt={introImage.alt && (introImage.alt as string)}
               />
             )}
             {introText2}
           </h1>
+        </div>
+      </section>
+
+      <section className="section section--columns">
+        <div className="columns">
+          {scrollGallery?.column1 && (
+            <div className="column-wrap">
+              <ul className="column">
+                {scrollGallery.column1.map((galleryImage, key) => {
+                  return <GalleryColumn key={key} galleryImage={galleryImage} />
+                })}
+              </ul>
+            </div>
+          )}
+          {scrollGallery?.column2 && (
+            <div className="column-wrap">
+              <ul className="column">
+                {scrollGallery.column2.map((galleryImage, key) => {
+                  return <GalleryColumn key={key} galleryImage={galleryImage} />
+                })}
+              </ul>
+            </div>
+          )}
+          {scrollGallery?.column3 && (
+            <div className="column-wrap">
+              <ul className="column">
+                {scrollGallery.column3.map((galleryImage, key) => {
+                  return <GalleryColumn key={key} galleryImage={galleryImage} />
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     </Layout>

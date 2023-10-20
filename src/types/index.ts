@@ -84,7 +84,11 @@ export interface HomePagePayload {
   introImage?: Image
   bannerText?: string
   colorScheme?: string
-  gallery?: Image[]
+  scrollGallery?: {
+    column1?: Image[]
+    column2?: Image[]
+    column3?: Image[]
+  }
   showcaseProjects?: Omit<Project, 'mainImage'>[]
   recentWorkHeading?: string
   recentWorkBody?: string
