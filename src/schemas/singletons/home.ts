@@ -56,7 +56,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (rule) => rule.required(),
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alt text',
+        }),
+      ],
     }),
 
     defineField({
@@ -74,19 +80,26 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'scrollingImages',
-      title: 'Scrolling Images',
+      name: 'gallery',
+      title: 'Gallery',
       description:
         'These images will scroll in the background after the intro section',
       type: 'array',
       of: [
         defineArrayMember({
-          name: 'scrollImage',
-          title: 'Scroll Image',
+          name: 'galleryImage',
+          title: 'Gallery Image',
           type: 'image',
           options: {
             hotspot: true,
           },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Alt text',
+            }),
+          ],
           validation: (rule) => rule.required(),
         }),
       ],

@@ -81,12 +81,12 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   introText: string
   introText2: string
-  introImage: string
+  introImage?: Image
   bannerText?: string
   colorScheme?: string
-  scrollingImages?: Image[]
-  showcaseProjects?: Omit<Project, 'mainImage'>
+  gallery?: Image[]
+  showcaseProjects?: Omit<Project, 'mainImage'>[]
   recentWorkHeading?: string
   recentWorkBody?: string
-  recentWork?: Omit<Project, 'featuredImageLarge' | 'featuredImageSmall'>
+  recentWork?: Omit<Project, 'featuredImageLarge' | 'featuredImageSmall'>[]
 }

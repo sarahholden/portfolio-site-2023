@@ -1,6 +1,5 @@
 import { PortableText } from '@portabletext/react'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
 import { CustomPortableText } from '~/components/shared/CustomPortableText'
