@@ -6,18 +6,18 @@ export interface MenuItem {
   title?: string
 }
 export interface Post {
-  _type: 'post'
+  _type: string
   _id: string
   _createdAt: string
   title?: string
-  slug: Slug
+  slug?: Slug
   excerpt?: string
   mainImage?: ImageAsset
   body: PortableTextBlock[]
 }
 
 export interface Project {
-  _type: 'project'
+  _type: string
   _id: string
   _createdAt: string
   title?: string
@@ -46,6 +46,10 @@ export interface InfoListType {
   heading2?: string
   body2?: string
   listItem2?: string[]
+}
+
+export interface DynamicImage extends Image {
+  alt: string
 }
 
 export interface NumberedListType {
@@ -85,12 +89,12 @@ export interface HomePagePayload {
   bannerText?: string
   colorScheme?: string
   scrollGallery?: {
-    column1?: Image[]
-    column2?: Image[]
-    column3?: Image[]
+    column1?: DynamicImage[]
+    column2?: DynamicImage[]
+    column3?: DynamicImage[]
   }
-  showcaseProjects?: Omit<Project, 'mainImage'>[]
+  showcaseProjects?: Project[]
   recentWorkHeading?: string
   recentWorkBody?: string
-  recentWork?: Omit<Project, 'featuredImageLarge' | 'featuredImageSmall'>[]
+  recentWork?: Project[]
 }

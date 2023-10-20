@@ -37,7 +37,39 @@ export async function getProjects(client: SanityClient): Promise<Project[]> {
   return await client.fetch(projectsQuery)
 }
 
-export const homePageQuery = groq`*[_type == "home"][1]`
+export const homePageQuery = groq`
+  *[_type == "home"][1]{
+    _id,
+    title,
+    overview,
+    introText,
+    introText2,
+    introImage,
+    bannerText,
+    colorScheme,
+    scrollGallery,
+
+    recentWorkHeading,
+    recentWorkBody,
+    recentWork[]->{
+      _type,
+      title,
+      featuredImageLarge,
+      featuredImageSmall,
+      projectType,
+      designCredit,
+      tags,
+    },
+    showcaseProjects[]->{
+      _type,
+      title,
+      mainImage,
+      projectType,
+      designCredit,
+      tags,
+    },
+  }
+`
 
 export async function getHomePage(
   client: SanityClient,

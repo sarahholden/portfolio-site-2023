@@ -1,9 +1,13 @@
 import Image from 'next/image'
 
 import { urlForImage } from '~/lib/sanity.image'
+import { DynamicImage } from '~/types'
 
-// TODO: Multiple imports not working
-export default function GalleryColumn({ galleryImage }) {
+export default function GalleryColumn({
+  galleryImage,
+}: {
+  galleryImage: DynamicImage
+}) {
   return (
     <li className="column__item">
       <div className="column__item-img">
@@ -13,7 +17,7 @@ export default function GalleryColumn({ galleryImage }) {
             src={urlForImage(galleryImage).url()}
             height={231}
             width={367}
-            alt={galleryImage.alt && (galleryImage.alt as string)}
+            alt={galleryImage.alt ?? ''}
           />
         )}
       </div>
