@@ -67,7 +67,7 @@ export default function IndexPage(
     recentWork,
   } = page
 
-  console.log(page)
+  // console.log(page)
 
   if (!page) {
     return <h1>No Page yet!</h1>
@@ -130,7 +130,6 @@ export default function IndexPage(
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="section section--showcase" id="work">
           {showcaseProjects.map((project, key) => {
-            console.log(project)
             return <FeaturedProject key={key} project={project} />
           })}
         </section>
@@ -174,7 +173,6 @@ export default function IndexPage(
 
           <nav className="menu">
             {recentWork.map((project, key) => {
-              console.log(project)
               return <RecentProject key={key} project={project} />
             })}
           </nav>
