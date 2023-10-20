@@ -79,6 +79,12 @@ export interface SettingsPayload {
 export interface HomePagePayload {
   title: string
   overview?: PortableTextBlock[]
+  introText: string
+  introText2: string
+  introImage: string
+  bannerText?: string
+  colorScheme?: string
+  scrollingImages?: Image[]
   showcaseProjects?: Omit<Project, 'mainImage'>
   recentWorkHeading?: string
   recentWorkBody?: string

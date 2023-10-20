@@ -1,10 +1,16 @@
+import styled from 'styled-components'
+
 import { InfoListType } from '~/types'
+
+const InfoSection = styled.section`
+  background-color: red;
+`
 
 export default function InfoList({ value }: { value: InfoListType }) {
   const { heading, listItem, body, heading2, listItem2, body2 } = value || {}
 
   return (
-    <section className="section--skills section--padded">
+    <InfoSection className="section--skills section--padded">
       <div className="section--skills-column">
         {heading && (
           <h2 className="section__title section__title--small">{heading}</h2>
@@ -39,6 +45,6 @@ export default function InfoList({ value }: { value: InfoListType }) {
           })}
         </ul>
       </div>
-    </section>
+    </InfoSection>
   )
 }

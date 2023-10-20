@@ -16,15 +16,16 @@ export default defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      validation: (Rule) => Rule.required(),
       options: {
         source: 'title',
         maxLength: 96,
       },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'overview',
@@ -32,6 +33,63 @@ export default defineType({
         'Used both for the <meta> description tag for SEO, and the personal website subheader.',
       title: 'Description',
       type: 'blockContent',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'introText',
+      description: 'Will appear in intro / hero section before image',
+      title: 'Hero Text 1',
+      type: 'text',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'introText2',
+      description: 'Will appear in intro / hero section after image',
+      title: 'Hero Text 2',
+      type: 'text',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'introImage',
+      title: 'Intro Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
+      name: 'bannerText',
+      type: 'text',
+      title: 'CTA Banner Text',
+    }),
+    defineField({
+      name: 'colorScheme',
+      type: 'string',
+      title: 'CTA Color Scheme',
+      description: 'Select color Scheme',
+      options: {
+        list: ['green', 'purple'],
+      },
+    }),
+    defineField({
+      name: 'scrollingImages',
+      title: 'Scrolling Images',
+      description:
+        'These images will scroll in the background after the intro section',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'scrollImage',
+          title: 'Scroll Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          validation: (rule) => rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'showcaseProjects',
